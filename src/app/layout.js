@@ -1,25 +1,26 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata = {
-  title: "Atlas Air",
-  description: "Atlas Air - Book Flights Worldwide",
+  title: "South African Airways | Virtual Airline",
+  description:
+    "South African Airways Virtual — Experience the spirit of Africa with our premier virtual airline. Join our community of pilots and explore the world from the skies.",
+  keywords: "virtual airline, flight simulation, South African Airways, SAA, aviation",
 };
+
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
+
         {children}
       </body>
     </html>
