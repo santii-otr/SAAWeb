@@ -18,7 +18,7 @@ function GlassFilter() {
   );
 }
 
-export function StarryButton({ children = "Click me", onClick }) {
+export function StarryButton({ children = "Discord Server", onClick }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const animRef = useRef(null);
@@ -26,13 +26,13 @@ export function StarryButton({ children = "Click me", onClick }) {
   const mouseRef = useRef({ x: -999, y: -999 });
   const [size, setSize] = useState({ w: 300, h: 60 });
 
-  const starsCount = 36;
+  const starsCount = 48;
   const starsSize = 1.1;
   const starsOpacity = 0.7;
   const movementSpeed = 0.12;
   const mouseInfluence = 70;
   const gravityStrength = 60;
-  const glowIntensity = 11;
+  const glowIntensity = 13;
 
   const initStars = useCallback((w, h) => {
     starsRef.current = Array.from({ length: starsCount }).map(() => {
@@ -162,14 +162,14 @@ export function StarryButton({ children = "Click me", onClick }) {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "0 2rem",
-        height: "3rem",
+        padding: "0 2.5rem",
+        height: "3.5rem",
         borderRadius: "9999px",
         border: "none",
         cursor: "pointer",
         overflow: "hidden",
         background: "transparent",
-        minWidth: "160px",
+        minWidth: "220px",
       }}
     >
       {/* Dark background */}
@@ -224,9 +224,10 @@ export function StarryButton({ children = "Click me", onClick }) {
       <span style={{
         position: "relative", zIndex: 4,
         color: "rgba(255,255,255,0.92)",
-        fontSize: "0.875rem",
-        fontWeight: 500,
-        letterSpacing: "0.04em",
+        fontSize: "1.1rem",
+        fontWeight: 700,
+        fontFamily: "var(--font-inter), 'Inter', 'Outfit', sans-serif",
+        letterSpacing: "0.03em",
         userSelect: "none",
         textShadow: "0 0 12px rgba(255,255,255,0.4)",
       }}>

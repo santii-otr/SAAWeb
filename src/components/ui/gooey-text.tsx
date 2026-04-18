@@ -131,7 +131,7 @@ const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => (
   <div className={cn("relative mx-auto h-16 w-full max-w-screen-md md:h-24", className)}>
     <div
       className={cn(
-        "relative h-full w-full text-center font-sans text-[40pt] font-bold leading-none text-white [filter:url(#threshold)_blur(0.6px)] lg:text-[6rem]",
+        "relative h-full w-full text-center font-[family-name:var(--font-outfit)] text-[40pt] font-bold leading-none text-white [filter:url(#threshold)_blur(0.6px)] lg:text-[6rem]",
       )}
     >
       <Texts texts={texts} />
