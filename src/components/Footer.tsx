@@ -1,6 +1,10 @@
 "use client";
 
-import { ChevronRightIcon } from "@radix-ui/react-icons";
+import {
+  DiscordLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 import { ClassValue, clsx } from "clsx";
 import * as Color from "color-bits";
 import Link from "next/link";
@@ -288,111 +292,41 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   );
 };
 
-type ComplianceIconProps = {
-  className?: string;
-};
-
-const Icons = {
-  Soc2: ({ className }: ComplianceIconProps) => (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <circle cx="20" cy="20" r="20" fill="currentColor" fillOpacity="0.1" />
-      <path
-        d="M20 10C14.48 10 10 14.48 10 20C10 25.52 14.48 30 20 30C25.52 30 30 25.52 30 20C30 14.48 25.52 10 20 10ZM20 28C15.58 28 12 24.42 12 20C12 15.58 15.58 12 20 12C24.42 12 28 15.58 28 20C28 24.42 24.42 28 20 28Z"
-        fill="currentColor"
-      />
-      <path d="M23 18H17V22H23V18Z" fill="currentColor" />
-    </svg>
-  ),
-  Hipaa: ({ className }: ComplianceIconProps) => (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <circle cx="20" cy="20" r="20" fill="currentColor" fillOpacity="0.1" />
-      <path d="M25 15H15V25H25V15Z" fill="currentColor" />
-      <path
-        d="M20 10V30M10 20H30"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-    </svg>
-  ),
-  Gdpr: ({ className }: ComplianceIconProps) => (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <circle cx="20" cy="20" r="20" fill="currentColor" fillOpacity="0.1" />
-      <path d="M26 14H14V26H26V14Z" stroke="currentColor" strokeWidth="2" />
-      <circle cx="20" cy="20" r="3" fill="currentColor" />
-    </svg>
-  ),
-};
-
 type FooterLink = {
-  id: number;
-  title: string;
-  url: string;
+  href: string;
+  label: string;
   external?: boolean;
 };
 
 const siteConfig = {
   name: "SAA",
-  eyebrow: "Private aviation",
-  description:
-    "Advanced technological solutions for modern business operations, crafted to make every itinerary feel smooth, discreet, and precisely coordinated.",
-  compliance: [
-    { label: "SOC 2", icon: Icons.Soc2 },
-    { label: "HIPAA", icon: Icons.Hipaa },
-    { label: "GDPR", icon: Icons.Gdpr },
+  socialLinks: [
+    {
+      href: "https://discord.gg/zG3nPd9vU6",
+      label: "Discord",
+      icon: DiscordLogoIcon,
+      external: true,
+    },
+    {
+      href: "#",
+      label: "Instagram",
+      icon: InstagramLogoIcon,
+    },
+    {
+      href: "#",
+      label: "LinkedIn",
+      icon: LinkedInLogoIcon,
+    },
   ],
-  footerLinks: [
-    {
-      title: "Navigate",
-      links: [
-        { id: 1, title: "Home", url: "#home" },
-        { id: 2, title: "About", url: "#about" },
-        { id: 3, title: "Fleet", url: "#fleet" },
-        { id: 4, title: "Contact", url: "#contact" },
-      ],
-    },
-    {
-      title: "Experience",
-      links: [
-        { id: 5, title: "Private Charters", url: "#fleet" },
-        { id: 6, title: "Flight Planning", url: "#contact" },
-        { id: 7, title: "Concierge Support", url: "#contact" },
-        { id: 8, title: "Client Access", url: "#contact" },
-      ],
-    },
-    {
-      title: "Connect",
-      links: [
-        {
-          id: 9,
-          title: "Discord Server",
-          url: "https://discord.gg/zG3nPd9vU6",
-          external: true,
-        },
-        { id: 10, title: "Journey Briefing", url: "#contact" },
-        { id: 11, title: "Partnerships", url: "#contact" },
-        { id: 12, title: "Start Planning", url: "#contact" },
-      ],
-    },
-  ] as { title: string; links: FooterLink[] }[],
+  mainLinks: [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#fleet", label: "Fleet" },
+    { href: "#contact", label: "Contact" },
+  ] as FooterLink[],
   legalLinks: [
-    { id: 13, title: "Privacy Policy", url: "#" },
-    { id: 14, title: "Terms of Service", url: "#" },
-    { id: 15, title: "Cookie Settings", url: "#" },
+    { href: "#", label: "Privacy" },
+    { href: "#", label: "Terms" },
   ] as FooterLink[],
 };
 
@@ -409,9 +343,9 @@ export default function Footer() {
           "radial-gradient(circle at top, rgba(0,86,179,0.08), transparent 34%)",
       }}
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-10 pt-16 lg:flex-row lg:items-start lg:justify-between lg:px-8">
-        <div className="flex max-w-sm flex-col gap-6">
-          <Link href="/" className="flex items-center gap-3">
+      <div className="mx-auto max-w-6xl px-6 pt-16 lg:px-8">
+        <div className="md:flex md:items-start md:justify-between">
+          <Link href="/" className="flex items-center gap-3" aria-label="SAA">
             <div
               className="flex h-12 w-12 items-center justify-center rounded-[1.1rem]"
               style={{
@@ -423,78 +357,66 @@ export default function Footer() {
               <span className="text-lg font-bold leading-none text-white">S</span>
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-lg font-semibold tracking-[0.18em] text-[var(--saa-navy)]">
-                {siteConfig.name}
-              </span>
-              <span className="text-[0.68rem] uppercase tracking-[0.32em] text-[var(--saa-gold)]">
-                {siteConfig.eyebrow}
-              </span>
-            </div>
+            <span className="text-xl font-bold text-[var(--saa-navy)]">
+              {siteConfig.name}
+            </span>
           </Link>
 
-          <p className="max-w-xs text-sm leading-7 text-[var(--saa-text-light)]">
-            {siteConfig.description}
-          </p>
+          <ul className="mt-6 flex list-none gap-3 md:mt-0">
+            {siteConfig.socialLinks.map((link) => {
+              const Icon = link.icon;
 
-          <div className="flex flex-wrap gap-3">
-            {siteConfig.compliance.map(({ label, icon: Icon }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 rounded-full border border-[color:rgba(0,40,85,0.10)] bg-white/85 px-3 py-2 shadow-[0_12px_32px_rgba(0,40,85,0.06)]"
-              >
-                <Icon className="h-5 w-5 text-[var(--saa-navy)]" />
-                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--saa-text-muted)]">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid flex-1 grid-cols-1 gap-10 sm:grid-cols-3 lg:max-w-2xl lg:pt-2">
-          {siteConfig.footerLinks.map((column) => (
-            <ul key={column.title} className="flex flex-col gap-3">
-              <li className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--saa-navy)]">
-                {column.title}
-              </li>
-
-              {column.links.map((link) => (
-                <li key={link.id}>
+              return (
+                <li key={link.label}>
                   <Link
-                    href={link.url}
+                    href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noreferrer" : undefined}
-                    className="group inline-flex items-center gap-2 text-[15px] text-[var(--saa-text-light)] transition-colors duration-300 hover:text-[var(--saa-navy)]"
+                    aria-label={link.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:rgba(0,40,85,0.10)] bg-white/85 text-[var(--saa-navy)] shadow-[0_10px_30px_rgba(0,40,85,0.06)] transition-colors duration-300 hover:bg-[var(--saa-navy)] hover:text-white"
                   >
-                    <span>{link.title}</span>
-                    <span className="flex h-4 w-4 items-center justify-center rounded border border-[color:rgba(0,40,85,0.14)] bg-white/80 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                      <ChevronRightIcon className="h-3 w-3" />
-                    </span>
+                    <Icon className="h-4 w-4" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <div className="mt-6 border-t border-[color:rgba(0,40,85,0.10)] pt-6 md:mt-4 md:pt-8 lg:grid lg:grid-cols-10">
+          <nav className="lg:col-[4/11]">
+            <ul className="flex list-none flex-wrap gap-x-4 gap-y-2 lg:justify-end">
+              {siteConfig.mainLinks.map((link) => (
+                <li key={link.label} className="shrink-0">
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[var(--saa-navy)] underline-offset-4 transition-colors duration-300 hover:underline"
+                  >
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          ))}
-        </div>
-      </div>
+          </nav>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-[color:rgba(0,40,85,0.10)] px-6 py-6 text-xs text-[var(--saa-text-muted)] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-        <p>
-          &copy; {new Date().getFullYear()} {siteConfig.name}. Elevated journeys,
-          thoughtfully coordinated.
-        </p>
+          <div className="mt-5 lg:col-[4/11] lg:mt-4">
+            <ul className="flex list-none flex-wrap gap-x-5 gap-y-2 lg:justify-end">
+              {siteConfig.legalLinks.map((link) => (
+                <li key={link.label} className="shrink-0">
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[var(--saa-text-muted)] underline-offset-4 transition-colors duration-300 hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="flex flex-wrap gap-5">
-          {siteConfig.legalLinks.map((link) => (
-            <Link
-              key={link.id}
-              href={link.url}
-              className="transition-colors duration-300 hover:text-[var(--saa-navy)]"
-            >
-              {link.title}
-            </Link>
-          ))}
+          <div className="mt-6 text-sm leading-6 text-[var(--saa-text-muted)] lg:col-[1/4] lg:row-[1/3] lg:mt-0">
+            &copy; {new Date().getFullYear()} {siteConfig.name}
+          </div>
         </div>
       </div>
 
