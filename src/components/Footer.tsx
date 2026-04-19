@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  DiscordLogoIcon,
-  InstagramLogoIcon,
-  LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
 import { ClassValue, clsx } from "clsx";
 import * as Color from "color-bits";
-import Link from "next/link";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -292,47 +286,9 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   );
 };
 
-type FooterLink = {
-  href: string;
-  label: string;
-  external?: boolean;
-};
-
-const siteConfig = {
-  name: "SAA",
-  socialLinks: [
-    {
-      href: "https://discord.gg/zG3nPd9vU6",
-      label: "Discord",
-      icon: DiscordLogoIcon,
-      external: true,
-    },
-    {
-      href: "#",
-      label: "Instagram",
-      icon: InstagramLogoIcon,
-    },
-    {
-      href: "#",
-      label: "LinkedIn",
-      icon: LinkedInLogoIcon,
-    },
-  ],
-  mainLinks: [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#fleet", label: "Fleet" },
-    { href: "#contact", label: "Contact" },
-  ] as FooterLink[],
-  legalLinks: [
-    { href: "#", label: "Privacy" },
-    { href: "#", label: "Terms" },
-  ] as FooterLink[],
-};
-
 export default function Footer() {
   const isTablet = useMediaQuery("(max-width: 1024px)");
-  const wordmark = isTablet ? siteConfig.name : "FLY BEYOND";
+  const wordmark = isTablet ? "SAA" : "FLY BEYOND";
 
   return (
     <footer
@@ -343,83 +299,6 @@ export default function Footer() {
           "radial-gradient(circle at top, rgba(0,86,179,0.08), transparent 34%)",
       }}
     >
-      <div className="mx-auto max-w-6xl px-6 pt-16 lg:px-8">
-        <div className="md:flex md:items-start md:justify-between">
-          <Link href="/" className="flex items-center gap-3" aria-label="SAA">
-            <div
-              className="flex h-12 w-12 items-center justify-center rounded-[1.1rem]"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--saa-navy), var(--saa-blue))",
-                boxShadow: "0 16px 36px rgba(0, 40, 85, 0.18)",
-              }}
-            >
-              <span className="text-lg font-bold leading-none text-white">S</span>
-            </div>
-
-            <span className="text-xl font-bold text-[var(--saa-navy)]">
-              {siteConfig.name}
-            </span>
-          </Link>
-
-          <ul className="mt-6 flex list-none gap-3 md:mt-0">
-            {siteConfig.socialLinks.map((link) => {
-              const Icon = link.icon;
-
-              return (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noreferrer" : undefined}
-                    aria-label={link.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:rgba(0,40,85,0.10)] bg-white/85 text-[var(--saa-navy)] shadow-[0_10px_30px_rgba(0,40,85,0.06)] transition-colors duration-300 hover:bg-[var(--saa-navy)] hover:text-white"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="mt-6 border-t border-[color:rgba(0,40,85,0.10)] pt-6 md:mt-4 md:pt-8 lg:grid lg:grid-cols-10">
-          <nav className="lg:col-[4/11]">
-            <ul className="flex list-none flex-wrap gap-x-4 gap-y-2 lg:justify-end">
-              {siteConfig.mainLinks.map((link) => (
-                <li key={link.label} className="shrink-0">
-                  <Link
-                    href={link.href}
-                    className="text-sm text-[var(--saa-navy)] underline-offset-4 transition-colors duration-300 hover:underline"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="mt-5 lg:col-[4/11] lg:mt-4">
-            <ul className="flex list-none flex-wrap gap-x-5 gap-y-2 lg:justify-end">
-              {siteConfig.legalLinks.map((link) => (
-                <li key={link.label} className="shrink-0">
-                  <Link
-                    href={link.href}
-                    className="text-sm text-[var(--saa-text-muted)] underline-offset-4 transition-colors duration-300 hover:underline"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-6 text-sm leading-6 text-[var(--saa-text-muted)] lg:col-[1/4] lg:row-[1/3] lg:mt-0">
-            &copy; {new Date().getFullYear()} {siteConfig.name}
-          </div>
-        </div>
-      </div>
-
       <div className="relative mt-10 h-48 md:h-64 lg:h-72">
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-background via-background/80 to-transparent" />
         <div className="absolute inset-x-6 inset-y-0 md:inset-x-8">
